@@ -8,7 +8,7 @@ import view.ReversiView;
  * main creates the model, view, and controller objects to be used for a single game,
  * then calls some methods from view in order to begin playing.
  * 
- * @author Jesse Liu
+ * @author Jesse Liu 
  *
  */
 public class Reversi {
