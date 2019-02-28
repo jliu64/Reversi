@@ -5,12 +5,17 @@ import org.junit.jupiter.api.Test;
 import controller.ReversiController;
 import model.ReversiModel;
 /**
+ * This class contains all of the test methods for the controller and model of the
+ * Reversi game.
  * 
  * @author Jesse Liu
  *
  */
 class ReversiTests {
 
+	/**
+	 * Test method for the Reversi controller.
+	 */
 	@Test
 	void testController() {
 		ReversiModel model = new ReversiModel();
@@ -42,6 +47,10 @@ class ReversiTests {
 		assertThrows(IllegalArgumentException.class, () -> controller.humanTurn(2, 10));
 	}
 	
+	/**
+	 * Test method for the Reversi model, deliberately calls some illegal moves to
+	 * aid in testing.
+	 */
 	@Test
 	void testModelDirectly1() {
 		ReversiModel model = new ReversiModel();
@@ -94,6 +103,10 @@ class ReversiTests {
 		assertFalse(controller.isGameOver());
 	}
 	
+	/**
+	 * Another test method for the Reversi model, deliberately calls some illegal
+	 * moves to aid in testing.
+	 */
 	@Test
 	void testModelDirectly2() {
 		ReversiModel model = new ReversiModel();
@@ -141,6 +154,9 @@ class ReversiTests {
 		assertFalse(controller.isGameOver());
 	}
 	
+	/**
+	 * Another test method for the Reversi controller (to aid in 100% branch coverage).
+	 */
 	@Test
 	void testController2() {
 		ReversiModel model = new ReversiModel();

@@ -5,6 +5,13 @@ import java.util.Scanner;
 import controller.ReversiController;
 
 /**
+ * View for the Reversi game (handles user input and output).
+ * 
+ * Stores a controller for the game, which is then used to send user input to
+ * the model, as well as have the computer take its turns and check if the game
+ * is over (and if so, who won). Contains the method which reads in user input
+ * and maintains the game so long as it hasn't ended, as well as methods for
+ * visually displaying the current state of the game board and the current score.
  * 
  * @author Jesse Liu
  *
@@ -13,12 +20,26 @@ public class ReversiView {
 	
 	private ReversiController controller;
 	
+	// Constructor (reads in controller object)
 	public ReversiView(ReversiController controller) {
 		this.controller = controller;
 		System.out.println("Welcome to Reversi\n");
 		System.out.println("You are W.\n");
 	}
 	
+	/**
+	 * playGame() reads in user input and calls methods from controller in order
+	 * maintain the game so long as it hasn't ended.
+	 * 
+	 * It uses a while loop which continues so long as the game is not over; within
+	 * this loop, the user is prompted, user input is processed (including conversion
+	 * from string coordinates to 2D array indices as integers), and controller methods
+	 * are called to process both the turns of the user and the computer. Calls both
+	 * displayBoard() and displayScores() to visually show the game board and scores
+	 * after every turn. Additionally, IllegalArgumentExceptions can be caught here,
+	 * in which case the user is simply re-prompted. After the game ends, the victor
+	 * is printed.
+	 */
 	public void playGame() {
 		Scanner userInput = new Scanner(System.in);
 		boolean stop = controller.isGameOver();
@@ -58,6 +79,13 @@ public class ReversiView {
 			System.out.println("Better luck next time!");
 	}
 	
+	/**
+	 * displayBoard() is used to show the game board on the screen.
+	 * 
+	 * More specifically, it calls the controller's reconstructBoard() method in order
+	 * to obtain a 2D array of the game board, then uses it to print out a visual
+	 * representation of the current state of the game board.
+	 */
 	public void displayBoard() {
 		char[][] board = controller.reconstructBoard();
 		for (int i = 0; i < board.length; i++) {
@@ -71,6 +99,13 @@ public class ReversiView {
 		System.out.println("  a b c d e f g h\n");
 	}
 	
+	/**
+	 * displayScore() is used to display the scores of the player and the computer
+	 * on the screen.
+	 * 
+	 * More specifically, it calls the getWScore() and getBScore() methods from the
+	 * controller, and prints them accordingly.
+	 */
 	public void displayScore() {
 		System.out.println("The score is " + controller.getWScore() + "-"
 				+ controller.getBScore() + ".");
