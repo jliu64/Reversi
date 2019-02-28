@@ -26,6 +26,10 @@ public class ReversiView {
 			System.out.print("Where would you like to place your token? ");
 			String response = userInput.nextLine().toLowerCase();
 			System.out.println();
+			if (response.length() != 2) {
+				System.out.println("Illegal move. Try again.\n");
+				continue;
+			}
 			int row = (response.charAt(1) - '0') - 1;
 			int col = response.charAt(0) - 'a';
 			try {
@@ -48,6 +52,8 @@ public class ReversiView {
 		userInput.close();
 		if (controller.getWinner() == 'W')
 			System.out.println("You win!");
+		else if (controller.getWinner() == '_')
+			System.out.println("You tied!");
 		else
 			System.out.println("Better luck next time!");
 	}

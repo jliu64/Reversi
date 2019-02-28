@@ -47,7 +47,7 @@ public class ReversiController {
 				}
 			}
 		}
-		if (maxRow == -1 && maxCol == -1)
+		if (maxRow == -1)
 			return null;
 		model.setPosB(maxRow, maxCol);
 		String coordinates = String.valueOf((char) (maxCol + 'a')) + String.valueOf(maxRow + 1);

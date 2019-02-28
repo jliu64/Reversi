@@ -377,7 +377,7 @@ public class ReversiModel {
 		}
 	}
 	
-	// get legal moves for W and B (account for oob in controller?)
+	// get legal moves for W and B (account for out-of-bounds in controller)
 	public boolean isLegalW(int row, int col) {
 		if (board[row][col] != '_')
 			return false;
@@ -403,7 +403,7 @@ public class ReversiModel {
 				i++;
 				j++;
 			}
-			if (board[i][j] == 'W' && (i != row + 1) && (j != col + 1))
+			if (board[i][j] == 'W' && (i != row + 1))
 				return true;
 		}
 		
@@ -428,7 +428,7 @@ public class ReversiModel {
 				i++;
 				j--;
 			}
-			if (board[i][j] == 'W' && (i != row + 1) && (j != col - 1))
+			if (board[i][j] == 'W' && (i != row + 1))
 				return true;
 		}
 		
@@ -453,7 +453,7 @@ public class ReversiModel {
 				i--;
 				j--;
 			}
-			if (board[i][j] == 'W' && (i != row - 1) && (j != col - 1))
+			if (board[i][j] == 'W' && (i != row - 1))
 				return true;
 		}
 		
@@ -478,7 +478,7 @@ public class ReversiModel {
 				i--;
 				j++;
 			}
-			if (board[i][j] == 'W' && (i != row - 1) && (j != col + 1))
+			if (board[i][j] == 'W' && (i != row - 1))
 				return true;
 		}
 		
